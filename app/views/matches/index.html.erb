@@ -1,0 +1,55 @@
+﻿<%= stylesheet_link_tag "matcher" %>
+<style>
+	.matcher li {
+		text-align:left;
+		border:1px solid;
+		margin-bottom:10px;
+		vertical-align:middle;
+	}
+
+</style>
+
+<h2>新着の紹介</h2>
+<p>
+	<ul class="matcher">
+		<% @matches.each do |match| %>
+		<li>
+			<div>
+			  <span>
+					<img src="http://a3.twimg.com/profile_images/478066543/rubymoon_bigger.png" alt="<%=h match.introduce_to_user %>" width="32px" height="32px" />
+			  </span>
+				<span><%=h match.user_status %></span>
+			</div>
+			<div>
+			  <span>
+				 <%=h match.post_status %></span>
+			  <span>
+					<img src="http://a3.twimg.com/profile_images/475792103/__04_bigger.png" alt="ume_bot" width="32px" height="32px" />
+			  </span>
+			</div>
+			
+		</li>
+		<% end %>
+	</ul>	
+		<table>
+			<thead>
+				<tr>
+					<th>ギブミー</th>
+					<th>ume_botの紹介者</th>
+					<th>sakura_botの紹介者</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @matches.each do |match| %>
+					<tr>
+						<td><%=h match.user_status %></td>
+						<td><%=h match.introduced_by_user %></td>
+			 		</tr>
+				<% end %>
+			</tbody>
+		</table>
+   </div>
+</p>
+
+<h2>紹介者ランキング</h2>
+<h2>質問ランキング</h2>

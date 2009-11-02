@@ -1,0 +1,27 @@
+﻿<%= stylesheet_link_tag "matcher" %>
+
+<div>
+	<div class="icon">
+		<div class="status left">
+		「<%=h @match.user_status %>」
+		</div>
+		と言っていた
+		<img class="clear" src="http://a3.twimg.com/profile_images/251812665/46196cc6878e8f3b4080818f73c47c77_bigger.png">
+		<a href="http://twitter.com/<%=h @match.introduce_to_user %>"><%=h @match.introduce_to_user %></a>さん
+	</div>
+	に<br>
+	<div class="icon">
+		<div class="status left">
+		「<%=h @match.post_status %>」
+		</div>
+		と言っていた
+		<img class="clear" src="http://a3.twimg.com/profile_images/438998961/rubymoon_bigger.png">
+		<a href="http://twitter.com/<%=h @match.introduced_by_user %>"><%=h @match.introduced_by_user %></a>さん
+	</div>
+	を紹介しました．
+</div>
+<div>
+	<%= link_to 'Show', @match %>
+</div>
+
+<%= link_to 'Back', matches_path %>

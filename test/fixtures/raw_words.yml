@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  twitter_id: 1
+  user_name: MyString
+  reading: MyString
+  surface: MyString
+  pos: MyString
+
+two:
+  twitter_id: 1
+  user_name: MyString
+  reading: MyString
+  surface: MyString
+  pos: MyString

@@ -1,0 +1,38 @@
+BODY {
+	text-align: center;
+}
+
+#frame {
+	margin: auto;
+	width: 800px;
+	text-align: left;
+}
+
+DIV.icon {
+	display: inline;
+}
+
+DIV.icon * {
+	vertical-align: middle;
+}
+
+#match_list {
+	list-style-type: none;
+}
+
+.status {
+	width: 320px;
+	vertical-align: middle;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
