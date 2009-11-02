@@ -1,29 +1,29 @@
-�����Twitter�����Ѥ��Ƽ��䤷��ʬ��˾ܤ����ͤ�õ�������ӥ��Ǥ���
+Twitterを利用して質問した分野に詳しい人を探すサービスです。
 
 
-����
+構成
 /
 	batch/
-		index_batch.rb # �����ѤΥ���ǥå������������
-		follow_new_followers.rb # �ե������δ���
-		retrieve_timeline.rb # TL��������ơ�ȿ�����֤�
+		index_batch.rb # 検索用のインデックスを作成する
+		follow_new_followers.rb # フォローの管理
+		retrieve_timeline.rb # TLを取得して、反応を返す
 	lib/
-		post.rb # Twitter�˥ݥ��Ȥ���
+		post.rb # Twitterにポストする
 		ma.rb # Yahoo Text API
-		user_finder.rb # �桼���١�������. ume_bot�Υ��󥸥�
-		tweet_finder.rb # ȯ���١�������. sakura_bot�Υ��󥸥�
-		message_generator_with_user.rb # ume_bot�ѤΥ�å����������⥸�塼��
-		message_generator_with_tweet.rb # sakua_bot�ѤΥ�å����������⥸�塼��
+		user_finder.rb # ユーザベース検索. ume_botのエンジン
+		tweet_finder.rb # 発言ベース検索. sakura_botのエンジン
+		message_generator_with_user.rb # ume_bot用のメッセージ生成モジュール
+		message_generator_with_tweet.rb # sakua_bot用のメッセージ生成モジュール
 	config
-		twitter.yml # bot��twitter���������
-		yahooapis.yml # YahooAPI�Υ��ץꥱ�������ID
+		twitter.yml # botのtwitterアカウント
+		yahooapis.yml # YahooAPIのアプリケーションID
 
 TODO
-	- WebFront(UI)�κ���
-	- �������٤θ���(TF-IDF��Ƴ������󥯤ˤ��Ť��դ�����)
-	- �ƥ���(spec)�κ���
-	- ���ȥ졼����sqlite����ROMA���ѹ�
-	- �����ǲ��Ϥ�YahooAPI�����㤻����ѹ� + ����Υ������ޥ���
-	- ȯ����ǽ��API��
-	- bot�ƤӽФ�����Ʊ��������
-	- �����ɤ�����
+	- WebFront(UI)の作成
+	- 検索精度の向上(TF-IDFの導入、リンクによる重み付け等々)
+	- テスト(spec)の作成
+	- ストレージをsqliteからROMAに変更
+	- 形態素解析をYahooAPIから茶せんに変更 + 辞書のカスタマイズ
+	- 発言機能のAPI化
+	- bot呼び出しの非同期処理化
+	- コードの整理
