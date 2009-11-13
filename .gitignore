@@ -1,0 +1,5 @@
+log/*.log
+db/*.sqlite3
+db/schema.rb
+config/twitter.yml
+config/yahooapis.yml

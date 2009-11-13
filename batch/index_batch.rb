@@ -2,8 +2,11 @@
 class IndexBatch
 	def indexingRawWord
 		index = Status.find(:all).
-				  			select{|x| RawWord.find_by_twitter_id(x.twitter_id) == nil}.
-							select{|x| x.to_user_name != nil and
+				  			select{|x| 
+				  				RawWord.find_by_twitter_id(x.twitter_id) == nil}.
+							select{|x| 
+				  				puts x.message
+				  						x.to_user_name != nil and
 									   x.to_user_name != 'ume_bot' and
 									   x.to_user_name != 'sakura_bot' and
 										User.find_by_screen_name(x.to_user_name) and

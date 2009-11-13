@@ -45,7 +45,9 @@ class UserFinder
 	end
 
 	def _split_words status
-		MA.new.split(status.split(":")[1..-1].join(":")).select{|x| x["pos"] == "名詞"}.map{|x| x["surface"]}
+		MA.new.split(status.sub('：',':').split(":")[1..-1].join(":")).
+				  select{|x| x["pos"] == "名詞"}.
+				  map{|x| x["surface"]}
 	end
 
 end

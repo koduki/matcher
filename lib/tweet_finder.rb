@@ -26,10 +26,6 @@ p r
 		end
 	end
 	
-	def _split_words status
-		MA.new.split(status.sub('：', ':').split(":")[1..-1].join(":")).select{|x| x["pos"] == "名詞"}.map{|x| x["surface"]}
-	end
-
 	def _find user, words
 		index = _index user
 		rank = _rank index, words
@@ -55,4 +51,12 @@ p r
 			  		group_by{|x| x.twitter_id}.
 					map{|x| [x.first, x.last.map{|y| y.surface}]}
 	end
+
+	def _split_words status
+		MA.new.split(status.sub('：', ':').split(":")[1..-1].join(":")).
+				  select{|x| x["pos"] == "名詞"}.
+				  map{|x| x["surface"]}
+	end
+
+
 end
