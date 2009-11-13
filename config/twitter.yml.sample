@@ -1,0 +1,9 @@
+scrape:
+  login: ume_bot
+  password: 
+user:
+  login: ume_bot
+  password: 
+tweet:
+  login: sakura_bot
+  password: 
