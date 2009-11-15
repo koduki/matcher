@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091114031610) do
+ActiveRecord::Schema.define(:version => 20091115140135) do
 
   create_table "matches", :force => true do |t|
     t.integer  "twitter_id"
@@ -19,9 +19,8 @@ ActiveRecord::Schema.define(:version => 20091114031610) do
     t.string   "introduced_by_user"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
     t.string   "bot_name"
-    t.string   "user_status_id"
+    t.integer  "user_status_id"
   end
 
   create_table "raw_words", :force => true do |t|

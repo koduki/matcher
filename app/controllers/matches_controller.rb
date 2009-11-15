@@ -20,7 +20,7 @@ class MatchesController < ApplicationController
 		.map{|x|
 			{
 				:text => x[0][5..-1],
-				:count => x[1].size 
+				:size => x[1].size * 2 + 10 
 			}
 		}
   end
