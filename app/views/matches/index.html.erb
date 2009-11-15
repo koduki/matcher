@@ -12,44 +12,54 @@
 <h2>新着の紹介</h2>
 <p>
 	<ul class="matcher">
-		<% @matches.each do |match| %>
+		<% @news.each do |matches| %>
 		<li>
 			<div>
 			  <span>
-					<img src="http://a3.twimg.com/profile_images/478066543/rubymoon_bigger.png" alt="<%=h match.introduce_to_user %>" width="32px" height="32px" />
+					<img src="http://a3.twimg.com/profile_images/478066543/rubymoon_bigger.png" alt="<%=h matches[0].introduce_to_user %>" width="32px" height="32px" />
 			  </span>
-				<span><%=h match.user_status %></span>
+				<span><%=h matches[0].user_status %></span>
+				<span><%=h matches[0].created_at %></span>
 			</div>
+			<% matches.each do |match|%>
 			<div>
+			  <span> <%=h match.post_status %> </span>
+			  <span> <%=h match.created_at %> </span>
 			  <span>
-				 <%=h match.post_status %></span>
-			  <span>
-					<img src="http://a3.twimg.com/profile_images/475792103/__04_bigger.png" alt="ume_bot" width="32px" height="32px" />
+						 <img src="http://a3.twimg.com/profile_images/475792103/__04_bigger.png" alt="<%= h match.bot_name %>" width="32px" height="32px" />
 			  </span>
 			</div>
-			
+ 			<% end %>
 		</li>
 		<% end %>
 	</ul>	
-		<table>
-			<thead>
-				<tr>
-					<th>ギブミー</th>
-					<th>ume_botの紹介者</th>
-					<th>sakura_botの紹介者</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @matches.each do |match| %>
-					<tr>
-						<td><%=h match.user_status %></td>
-						<td><%=h match.introduced_by_user %></td>
-			 		</tr>
-				<% end %>
-			</tbody>
-		</table>
    </div>
 </p>
 
 <h2>紹介者ランキング</h2>
-<h2>質問ランキング</h2>
+<table>
+ 	<thead>
+		<tr>
+			<th>順位</th>
+			<th>ID</th>
+			<th>紹介数</th>
+		</tr>
+	</thead>
+	<tbody>
+<% @intro_rank.each_with_index do |user, rank| %>
+		<tr>
+			<td><%= rank + 1 %></td>
+			<td><%= link_to h(user[:name]), {
+					  :controller=> 'users', 
+					  :action=>'index', 
+					  :name=>h(user[:name])} %></td>
+			<td><%= h user[:count]  %></td>
+		</tr>	  
+<% end %>
+	</tbody>
+</table>
+
+<h2>ホットギブミー</h2>
+<% @hot_giveme.each do |x| %>
+		  <span style="font-size:<%= x[:count] %>px"><%= x[:text] %></span>
+<% end %>

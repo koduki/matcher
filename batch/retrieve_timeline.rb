@@ -9,7 +9,7 @@ def post status, finder, generator, user
 	puts "post messge :#{msg}"
 	
 	unless msg == nil
-		post = Post.new.post(msg, user)
+		post = Post.new.post(msg, status.twitter_id, user)
 		puts = "Tweet about the status \n #{post}"
 
 		# 発言内容を保存.

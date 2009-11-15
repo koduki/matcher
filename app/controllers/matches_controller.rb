@@ -1,13 +1,40 @@
+# -*- encoding: utf-8 -*-
 class MatchesController < ApplicationController
   # GET /matches
   # GET /matches.xml
   def index
-    @matches = Match.find(:all)
+	 @news = Match.find(:all).group_by{|x| x.user_status_id}.map{|x| x[1]}.
+				reverse[0..4]
+	 @intro_rank = rank('introduced_by_user')
+	 @hot_giveme = hot_giveme
 
-    respond_to do |format|
+	 respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @matches }
     end
+  end
+
+  def hot_giveme
+	 Match.find(:all)
+	 	.group_by{|x| x.user_status.sub('：', ':')}
+		.sort_by{|x| x[1].size * -1}
+		.map{|x|
+			{
+				:text => x[0][5..-1],
+				:count => x[1].size 
+			}
+		}
+  end
+
+  def rank column
+	 Match.find(:all, 
+				  :select => "count(*) count, " + column, 
+				  :group=> column)
+	 		.map{|x| {
+				  :name => (x[column]) ? x[column] : 'Google先生', 
+				  :count => x.count.to_i 
+					}
+			}.sort_by{|x| x[:count]}
+			.reverse
   end
 
   # GET /matches/1

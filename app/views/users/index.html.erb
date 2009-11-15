@@ -1,0 +1,35 @@
+﻿<%= stylesheet_link_tag "matcher" %>
+<style>
+	.matcher li {
+		text-align:left;
+		border:1px solid;
+		margin-bottom:10px;
+		vertical-align:middle;
+	}
+
+</style>
+
+<h2><%= @user %>を紹介した発言一覧 </h2>
+<p>
+	<ul class="matcher">
+		<% @matches.each do |match| %>
+		<li>
+			<div>
+			  <span> <%=h match.post_status %> </span>
+			  <span> <%=h match.created_at %> </span>
+			  <span>
+						 <img src="http://a3.twimg.com/profile_images/475792103/__04_bigger.png" alt="<%= h match.bot_name %>" width="32px" height="32px" />
+			  </span>
+			</div>
+		</li>
+		<% end %>
+	</ul>	
+   </div>
+</p>
+
+<h2>詳しい分野</h2>
+<% @scope.each do |word| %>
+		  <span style="font-size:<%= word.count.to_i + 10 %>px">
+<%= word.text %>
+</span>
+<% end %>

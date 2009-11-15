@@ -15,13 +15,15 @@ class Post
 	# 
 	def post status, env='test'
 		# The bot tweets
-		config_file_path = File.join(File.dirname(__FILE__), "..", "config",  "twitter.yml")
+		config_file_path = File.join(File.dirname(__FILE__), 
+											  "..", "config",  "twitter.yml")
 	  	puts config_file_path
 
 		client = Twitter::Client.from_config(config_file_path, env)
 		post_status = client.status(:post, status[:message])
 		status[:twitter_id] = post_status.id
 		status[:post_status] = post_status.text
+		status[:bot_name] = (env == 'user') ? 'ume_bot' : 'sakura_bot' 
 		status.delete(:message)
 		status
 	end
